@@ -13,5 +13,13 @@ namespace Core1.Models
             entityBuilder.HasKey(t => t.Id);
             entityBuilder.Property(t => t.Name).IsRequired();
         }
+
+        public ModelMap(EntityTypeBuilder<Item> entityBuilder)
+        {
+            entityBuilder.HasKey(t => t.Id);
+            entityBuilder.Property(t => t.Name).IsRequired();
+            entityBuilder.Property(t => t.Price).IsRequired();
+            entityBuilder.Property(t => t.Stock).IsRequired();
+        }
     }
 }

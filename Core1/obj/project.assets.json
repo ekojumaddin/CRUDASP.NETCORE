@@ -12959,11 +12959,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\users\\notebook\\documents\\visual studio 2017\\Projects\\Core1\\Core1\\Core1.csproj",
+      "projectUniqueName": "E:\\MII\\CRUDASP.NETCORE\\Core1\\Core1.csproj",
       "projectName": "Core1",
-      "projectPath": "c:\\users\\notebook\\documents\\visual studio 2017\\Projects\\Core1\\Core1\\Core1.csproj",
+      "projectPath": "E:\\MII\\CRUDASP.NETCORE\\Core1\\Core1.csproj",
       "packagesPath": "C:\\Users\\Notebook\\.nuget\\packages\\",
-      "outputPath": "c:\\users\\notebook\\documents\\visual studio 2017\\Projects\\Core1\\Core1\\obj\\",
+      "outputPath": "E:\\MII\\CRUDASP.NETCORE\\Core1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

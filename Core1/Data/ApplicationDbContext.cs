@@ -15,7 +15,9 @@ namespace Core1.Data
         {
             base.OnModelCreating(modelBuilder);
             new ModelMap(modelBuilder.Entity<Supplier>());
+            new ModelMap(modelBuilder.Entity<Item>());
         }
         public DbSet<Core1.Models.Supplier> Supplier { get; set; }
+        public DbSet<Core1.Models.Item> Item { get; set; }
     }
 }

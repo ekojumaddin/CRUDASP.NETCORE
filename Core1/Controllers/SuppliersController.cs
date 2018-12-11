@@ -21,26 +21,15 @@ namespace Core1.Controllers
 
         [HttpGet]
         // GET: Suppliers
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Supplier.ToListAsync());
+            return View(_context.Supplier.ToList());
         }
 
         // GET: Suppliers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var supplier = await _context.Supplier
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (supplier == null)
-            {
-                return NotFound();
-            }
-
+            var supplier = _context.Supplier.SingleOrDefault(m => m.Id == id);
             return View(supplier);
         }
 
@@ -55,31 +44,22 @@ namespace Core1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Name,Id,CreateDate,UpdateDate,DeleteDate")] Supplier supplier)
+        public IActionResult Create(Supplier supplier)
         {
             if (ModelState.IsValid)
             {
                 supplier.CreateDate = DateTimeOffset.Now.LocalDateTime;
                 _context.Add(supplier);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(supplier);
         }
 
         // GET: Suppliers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var supplier = await _context.Supplier.FindAsync(id);
-            if (supplier == null)
-            {
-                return NotFound();
-            }
+            var supplier = _context.Supplier.Find(id);
             return View(supplier);
         }
 
@@ -88,19 +68,14 @@ namespace Core1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Id,CreateDate,UpdateDate,DeleteDate")] Supplier supplier)
+        public IActionResult Edit(int id, Supplier supplier)
         {
-            if (id != supplier.Id)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(supplier);
-                    await _context.SaveChangesAsync();
+                    _context.SaveChanges();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
