@@ -76,10 +76,10 @@ E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Core1.Views.pdb
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Core1.dll
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Core1.pdb
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Core1.csproj.CopyComplete
-E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Item\Index.g.cshtml.cs
-E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Item\Create.g.cshtml.cs
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Items\Create.g.cshtml.cs
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Items\Delete.g.cshtml.cs
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Items\Details.g.cshtml.cs
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Items\Edit.g.cshtml.cs
 E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Items\Index.g.cshtml.cs
+E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Item\Create.g.cshtml.cs
+E:\MII\CRUDASP.NETCORE\Core1\obj\Debug\netcoreapp2.2\Razor\Views\Item\Index.g.cshtml.cs
