@@ -19,6 +19,23 @@ namespace Core1.Controllers
             _context = context;
         }
 
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        //public JsonResult GetData()
+        //{
+        //    var k = _context.Supplier.ToList();
+        //    return Json(k);
+        //    //var a = context.Suppliers.Where(x => x.IsDelete == false).ToList();
+        //    //return a;
+        //}
+
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
         [HttpGet]
         // GET: Suppliers
         public IActionResult Index()
@@ -33,6 +50,7 @@ namespace Core1.Controllers
             return View(supplier);
         }
 
+        #region Create
         // GET: Suppliers/Create
         public IActionResult Create()
         {
@@ -55,7 +73,8 @@ namespace Core1.Controllers
             }
             return View(supplier);
         }
-
+        #endregion
+        #region Edit
         // GET: Suppliers/Edit/5
         public IActionResult Edit(int? id)
         {
@@ -68,31 +87,37 @@ namespace Core1.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Supplier supplier)
+        public IActionResult Edit(Supplier supplier, DateTime CreateDates)
         {
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(supplier);
-                    _context.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!SupplierExists(supplier.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                //try
+                //{
+                //    supplier.UpdateDate = DateTimeOffset.Now.ToLocalTime();
+                //    _context.Update(supplier);
+                //    _context.SaveChanges();
+                //}
+                //catch (DbUpdateConcurrencyException)
+                //{
+                //    if (!SupplierExists(supplier.Id))
+                //    {
+                //        return NotFound();
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
+                supplier.CreateDate = CreateDates;
+                supplier.UpdateDate = DateTimeOffset.Now.LocalDateTime;
+                _context.Entry(supplier).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             return View(supplier);
         }
-
+        #endregion
+        #region Delete
         // GET: Suppliers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -121,10 +146,10 @@ namespace Core1.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-        private bool SupplierExists(int id)
-        {
-            return _context.Supplier.Any(e => e.Id == id);
-        }
+        #endregion
+        //private bool SupplierExists(int id)
+        //{
+        //    return _context.Supplier.Any(e => e.Id == id);
+        //}
     }
 }

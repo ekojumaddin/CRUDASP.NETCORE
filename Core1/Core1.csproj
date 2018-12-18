@@ -8,6 +8,15 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\images\img3.jpg" />
+    <Content Remove="wwwroot\js\AddingItem.js" />
+    <Content Remove="wwwroot\js\AddingSupplier.js" />
+    <Content Remove="wwwroot\plugins\datatables\jquery.dataTables.min.css" />
+    <Content Remove="wwwroot\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Remove="wwwroot\plugins\styleswitcher\jQuery.style.switcher.js" />
+    <Content Remove="wwwroot\plugins\sweetalert\jquery.sweet-alert.custom.js" />
+    <Content Remove="wwwroot\plugins\sweetalert\sweetalert-dev.js" />
+    <Content Remove="wwwroot\plugins\sweetalert\sweetalert.css" />
+    <Content Remove="wwwroot\plugins\sweetalert\sweetalert.min.js" />
   </ItemGroup>
 
 
@@ -30,7 +39,16 @@
 
 
   <ItemGroup>
-    <None Include="wwwroot\images\img3.jpg" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\js\AddingItem.js" />
+    <None Include="wwwroot\js\AddingSupplier.js" />
+    <None Include="wwwroot\plugins\datatables\jquery.dataTables.min.css" />
+    <None Include="wwwroot\plugins\datatables\jquery.dataTables.min.js" />
+    <None Include="wwwroot\plugins\styleswitcher\jQuery.style.switcher.js" />
+    <None Include="wwwroot\plugins\sweetalert\jquery.sweet-alert.custom.js" />
+    <None Include="wwwroot\plugins\sweetalert\sweetalert-dev.js" />
+    <None Include="wwwroot\plugins\sweetalert\sweetalert.css" />
+    <None Include="wwwroot\plugins\sweetalert\sweetalert.min.js" />
   </ItemGroup>
 
 </Project>

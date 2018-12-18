@@ -18,17 +18,18 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="Id" />
-            @*<div class="form-group">
+            <div class="form-group">
                 <label asp-for="CreateDate" class="control-label"></label>
-                <input asp-for="CreateDate" class="form-control" />
+                <input asp-for="CreateDate" class="form-control" disabled="disabled"/>
+                <input type="hidden" value="@Model.CreateDate" name="CreateDates" />
                 <span asp-validation-for="CreateDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="UpdateDate" class="control-label"></label>
                 <input asp-for="UpdateDate" class="form-control" />
                 <span asp-validation-for="UpdateDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div>*@
+            @*<div class="form-group">
                 <label asp-for="DeleteDate" class="control-label"></label>
                 <input asp-for="DeleteDate" class="form-control" />
                 <span asp-validation-for="DeleteDate" class="text-danger"></span>

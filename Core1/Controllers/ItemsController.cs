@@ -16,12 +16,10 @@ namespace Core1.Controllers
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private readonly IHostingEnvironment _appEnvironment;
 
-        public ItemsController(ApplicationDbContext context, IHostingEnvironment appEnvirontment)
+        public ItemsController(ApplicationDbContext context)
         {
             _context = context;
-            _appEnvironment = appEnvirontment;
         }
 
         [HttpGet]
@@ -36,11 +34,13 @@ namespace Core1.Controllers
         // GET: Items/Details/5
         public IActionResult Details(int? id)
         {
-            var item = _context.Item.Include(i => i.Supplier).FirstOrDefault(m => m.Id == id);
+            var item = _context.Item.Include(i => i.Supplier).SingleOrDefault(m => m.Id == id);
             return View(item);
         }
 
+        #region Create
         // GET: Items/Create
+        [HttpGet]
         public IActionResult Create()
         {
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "Id", "Name");
@@ -60,9 +60,8 @@ namespace Core1.Controllers
             }
             else
             {
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images",
-                    image.FileName);
-                var stream = new FileStream(path, FileMode.Create);
+                string path = "F:/MII/CRUDASP.NETCORE/Core1/wwwroot/images/"+image.FileName;
+                image.CopyTo(new FileStream(path, FileMode.Create));
                 item.Image = image.FileName;
             }
 
@@ -76,29 +75,11 @@ namespace Core1.Controllers
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "Id", "Name", item.SupplierId);
             return View(item);
         }
-
-        //public IActionResult Create(IList<IFormFile> files)
-        //{
-        //    IFormFile upload = files.FirstOrDefault();
-        //    if(upload == null || upload.ContentType.ToLower().StartsWith("wwwroot/images"))
-        //    {
-        //        using (ApplicationDbContext dbContext = new ApplicationDbContext())
-        //        {
-        //            MemoryStream ms = new MemoryStream();
-        //            upload.OpenReadStream().CopyTo(ms);
-
-        //            System.Drawing.Image image
-        //        }
-        //    }
-        //}
+        #endregion
+        #region Edit
         // GET: Items/Edit/5
         public IActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var item = _context.Item.Find(id);
             if (item == null)
             {
@@ -109,41 +90,56 @@ namespace Core1.Controllers
         }
 
         // POST: Items/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Name,Price,Stock,Image,SupplierId,Id,CreateDate,UpdateDate,DeleteDate,IsDelete")] Item item)
+        public IActionResult Edit(Item item, IFormFile image, string imagee, DateTime CreateDates)
         {
-            if (id != item.Id)
+            if (image == null || image.Length == 0)
             {
-                return NotFound();
+                item.Image = imagee;
+                item.CreateDate = CreateDates;
+                //item.Image = _context.Item.Find(id).Image;
+            }
+            else
+            {
+                string path = "F:/MII/CRUDASP.NETCORE/Core1/wwwroot/images/" + image.FileName;
+                image.CopyTo(new FileStream(path, FileMode.Create));
+                //var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images",
+                //    image.FileName);
+                //var stream = new FileStream(path, FileMode.Create);
+                item.Image = image.FileName;
+                item.CreateDate = CreateDates;
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(item);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ItemExists(item.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                //try
+                //{
+                //    _context.Update(item);
+                //    _context.SaveChanges();
+                //}
+                //catch (DbUpdateConcurrencyException)
+                //{
+                //    if (!ItemExists(item.Id))
+                //    {
+                //        return NotFound();
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
+                
+                item.UpdateDate = DateTimeOffset.Now.LocalDateTime;
+                _context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SupplierId"] = new SelectList(_context.Supplier, "Id", "Name", item.SupplierId);
             return View(item);
         }
-
+        #endregion
+        #region Delete
         // GET: Items/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -169,14 +165,16 @@ namespace Core1.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var item = await _context.Item.FindAsync(id);
+            item.DeleteDate = DateTimeOffset.Now.LocalDateTime;
             _context.Item.Remove(item);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        #endregion
 
-        private bool ItemExists(int id)
-        {
-            return _context.Item.Any(e => e.Id == id);
-        }
+        //private bool ItemExists(int id)
+        //{
+        //    return _context.Item.Any(e => e.Id == id);
+        //}
     }
 }

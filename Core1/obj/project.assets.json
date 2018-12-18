@@ -12953,23 +12953,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Notebook\\.nuget\\packages\\": {},
+    "C:\\Users\\Eko_Jumaddin\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\MII\\CRUDASP.NETCORE\\Core1\\Core1.csproj",
+      "projectUniqueName": "F:\\MII\\CRUDASP.NETCORE\\Core1\\Core1.csproj",
       "projectName": "Core1",
-      "projectPath": "E:\\MII\\CRUDASP.NETCORE\\Core1\\Core1.csproj",
-      "packagesPath": "C:\\Users\\Notebook\\.nuget\\packages\\",
-      "outputPath": "E:\\MII\\CRUDASP.NETCORE\\Core1\\obj\\",
+      "projectPath": "F:\\MII\\CRUDASP.NETCORE\\Core1\\Core1.csproj",
+      "packagesPath": "C:\\Users\\Eko_Jumaddin\\.nuget\\packages\\",
+      "outputPath": "F:\\MII\\CRUDASP.NETCORE\\Core1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Notebook\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Eko_Jumaddin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
